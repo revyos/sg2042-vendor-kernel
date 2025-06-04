@@ -191,6 +191,10 @@ echo $debarch > debian/arch
 
 host_gnu=$(dpkg-architecture -a "${debarch}" -q DEB_HOST_GNU_TYPE | sed 's/_/-/g')
 
+VERSION_C=$(echo "$KERNELRELEASE" | rev | cut -d'.' -f1 | rev)
+VERSION_AB=$(echo "$KERNELRELEASE" | cut -d'.' -f1,2)
+PACKAGENAMEVERSION="${VERSION_AB}.0"
+
 # Generate a simple changelog template
 cat <<EOF > debian/changelog
 $sourcename ($packageversion) $distribution; urgency=low
@@ -215,7 +219,7 @@ Build-Depends-Arch: bc, bison, flex,
  python3:native, rsync
 Homepage: https://www.kernel.org/
 
-Package: $packagename-${KERNELRELEASE}
+Package: $packagename-${PACKAGENAMEVERSION}
 Architecture: $debarch
 Description: Linux kernel, version ${KERNELRELEASE}
  This package contains the Linux kernel, modules and corresponding other
@@ -238,7 +242,7 @@ EOF
 if is_enabled CONFIG_MODULES; then
 cat <<EOF >> debian/control
 
-Package: linux-headers-${KERNELRELEASE}
+Package: linux-headers-${PACKAGENAMEVERSION}
 Architecture: $debarch
 Build-Profiles: <!pkg.${sourcename}.nokernelheaders>
 Description: Linux kernel headers for ${KERNELRELEASE} on $debarch
@@ -252,7 +256,7 @@ fi
 if is_enabled CONFIG_DEBUG_INFO; then
 cat <<EOF >> debian/control
 
-Package: linux-image-${KERNELRELEASE}-dbg
+Package: linux-image-${PACKAGENAMEVERSION}-dbg
 Section: debug
 Architecture: $debarch
 Build-Profiles: <!pkg.${sourcename}.nokerneldbg>
