@@ -216,7 +216,9 @@ static __always_inline int arch_atomic_fetch_add_unless(atomic_t *v, int a, int 
 {
        int prev, rc;
 
+	pre_lrsc((unsigned long)v);
 	_arch_atomic_fetch_add_unless(prev, rc, v->counter, a, u, "w");
+	post_lrsc((unsigned long)v);
 
 	return prev;
 }
@@ -228,7 +230,9 @@ static __always_inline s64 arch_atomic64_fetch_add_unless(atomic64_t *v, s64 a, 
        s64 prev;
        long rc;
 
+	pre_lrsc((unsigned long)v);
 	_arch_atomic_fetch_add_unless(prev, rc, v->counter, a, u, "d");
+	post_lrsc((unsigned long)v);
 
 	return prev;
 }
@@ -254,7 +258,9 @@ static __always_inline bool arch_atomic_inc_unless_negative(atomic_t *v)
 {
 	int prev, rc;
 
+	pre_lrsc((unsigned long)v);
 	_arch_atomic_inc_unless_negative(prev, rc, v->counter, "w");
+	post_lrsc((unsigned long)v);
 
 	return !(prev < 0);
 }
@@ -280,7 +286,9 @@ static __always_inline bool arch_atomic_dec_unless_positive(atomic_t *v)
 {
 	int prev, rc;
 
+	pre_lrsc((unsigned long)v);
 	_arch_atomic_dec_unless_positive(prev, rc, v->counter, "w");
+	post_lrsc((unsigned long)v);
 
 	return !(prev > 0);
 }
@@ -306,7 +314,9 @@ static __always_inline int arch_atomic_dec_if_positive(atomic_t *v)
 {
        int prev, rc;
 
+	pre_lrsc((unsigned long)v);
 	_arch_atomic_dec_if_positive(prev, rc, v->counter, "w");
+	post_lrsc((unsigned long)v);
 
 	return prev - 1;
 }
@@ -319,7 +329,9 @@ static __always_inline bool arch_atomic64_inc_unless_negative(atomic64_t *v)
 	s64 prev;
 	long rc;
 
+	pre_lrsc((unsigned long)v);
 	_arch_atomic_inc_unless_negative(prev, rc, v->counter, "d");
+	post_lrsc((unsigned long)v);
 
 	return !(prev < 0);
 }
@@ -331,7 +343,9 @@ static __always_inline bool arch_atomic64_dec_unless_positive(atomic64_t *v)
 	s64 prev;
 	long rc;
 
+	pre_lrsc((unsigned long)v);
 	_arch_atomic_dec_unless_positive(prev, rc, v->counter, "d");
+	post_lrsc((unsigned long)v);
 
 	return !(prev > 0);
 }
@@ -343,7 +357,9 @@ static __always_inline s64 arch_atomic64_dec_if_positive(atomic64_t *v)
        s64 prev;
        long rc;
 
+	pre_lrsc((unsigned long)v);
 	_arch_atomic_dec_if_positive(prev, rc, v->counter, "d");
+	post_lrsc((unsigned long)v);
 
 	return prev - 1;
 }

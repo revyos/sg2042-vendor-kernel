@@ -10,6 +10,7 @@
 
 #include <asm/barrier.h>
 #include <asm/fence.h>
+#include <asm/lrsc.h>
 
 #define __arch_xchg_masked(prepend, append, r, p, n)			\
 ({									\
@@ -157,6 +158,7 @@
 	__typeof__(*(__ptr)) __new = (new);				\
 	__typeof__(*(__ptr)) __ret;					\
 									\
+	pre_lrsc((unsigned long)__ptr);					\
 	switch (sizeof(*__ptr)) {					\
 	case 1:								\
 	case 2:								\
@@ -174,6 +176,7 @@
 	default:							\
 		BUILD_BUG();						\
 	}								\
+	post_lrsc((unsigned long)__ptr);				\
 	(__typeof__(*(__ptr)))__ret;					\
 })
 
