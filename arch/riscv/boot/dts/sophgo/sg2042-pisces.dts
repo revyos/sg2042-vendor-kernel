@@ -87,6 +87,30 @@
 	};
 
 	soc {
+		spifmc2: spi@f000180000 {
+			compatible = "sophgo,sg2042-spifmc-nor";
+			reg = <0xf0 0x00180000 0x0 0x1000000>;
+			#address-cells = <1>;
+			#size-cells = <0>;
+			clocks = <&clkgen GATE_CLK_AHB_SF>;
+			interrupt-parent = <&intc>;
+			interrupts = <332 IRQ_TYPE_LEVEL_HIGH>;
+			resets = <&rstgen RST_SF0>;
+			status = "disabled";
+		};
+
+		spifmc3: spi@f002180000 {
+			compatible = "sophgo,sg2042-spifmc-nor";
+			reg = <0xf0 0x02180000 0x0 0x1000000>;
+			#address-cells = <1>;
+			#size-cells = <0>;
+			clocks = <&clkgen GATE_CLK_AHB_SF>;
+			interrupt-parent = <&intc>;
+			interrupts = <333 IRQ_TYPE_LEVEL_HIGH>;
+			resets = <&rstgen RST_SF1>;
+			status = "disabled";
+		};
+
 		msi1: msi-controller@f030010308 {
 			compatible = "sophgo,sg2042-msi";
 			reg = <0xf0 0x30010304 0x0 0x4>,
