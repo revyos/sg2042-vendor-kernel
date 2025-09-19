@@ -13,8 +13,8 @@
 #define SOC_PERIPHERAL_IRQ(nr)	(nr)
 
 / {
-	model = "Sophgo Mango";
-	compatible = "sophgo,mango";
+	model = "Sophgo SG2042";
+	compatible = "sophgo,sg2042";
 	#address-cells = <2>;
 	#size-cells = <2>;
 	dma-noncoherent;

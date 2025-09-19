@@ -3,6 +3,9 @@
 #include "mango-pcie-2rc.dtsi"
 
 / {
+	model = "Sophgo SG2042 Pisces";
+	compatible = "sophgo,sg2042-pisces", "sophgo,sg2042";
+
 	info {
 		file-name = "mango-sophgo-pisces.dts";
 	};

@@ -2,6 +2,9 @@
 #include "mango-pcie-4rc.dtsi"
 
 / {
+	model = "Milk-V Pioneer";
+	compatible = "milkv,pioneer", "sophgo,sg2042";
+
 	info {
 		file-name = "mango-milkv-pioneer.dts";
 	};

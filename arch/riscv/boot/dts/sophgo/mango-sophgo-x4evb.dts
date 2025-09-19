@@ -2,6 +2,9 @@
 #include "mango-pcie-3rc-v2.dtsi"
 
 / {
+	model = "Sophgo SG2042 EVB V2.0";
+	compatible = "sophgo,sg2042-evb-v2", "sophgo,sg2042";
+
 	info {
 		file-name = "mango-sophgo-x4evb.dts";
 	};
