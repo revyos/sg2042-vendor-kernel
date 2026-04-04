@@ -6,6 +6,7 @@
 	pcie@7060000000 {
 		compatible = "sophgo,cdns-pcie-host";
 		device_type = "pci";
+		dma-coherent;
 		#address-cells = <3>;
 		#size-cells = <2>;
 
@@ -42,6 +43,7 @@
 	pcie@7060800000 {
 		compatible = "sophgo,cdns-pcie-host";
 		device_type = "pci";
+		dma-coherent;
 		#address-cells = <3>;
 		#size-cells = <2>;
 
@@ -77,6 +79,7 @@
 	pcie@7062000000 {
 		compatible = "sophgo,cdns-pcie-host";
 		device_type = "pci";
+		dma-coherent;
 		#address-cells = <3>;
 		#size-cells = <2>;
 

@@ -6,6 +6,7 @@
 	pcie@7062000000 {
 		compatible = "sophgo,cdns-pcie-host";
 		device_type = "pci";
+		dma-coherent;
 		#address-cells = <3>;
 		#size-cells = <2>;
 
@@ -44,6 +45,7 @@
 	pcie@7062800000 {
 		compatible = "sophgo,cdns-pcie-host";
 		device_type = "pci";
+		dma-coherent;
 		#address-cells = <3>;
 		#size-cells = <2>;
 
@@ -81,11 +83,12 @@
 	pcie@f060000000 {
 		compatible = "sophgo,cdns-pcie-host";
 		device_type = "pci";
+		dma-coherent;
 		#address-cells = <3>;
 		#size-cells = <2>;
 
 		bus-range = <0x80 0xbf>;
-		linux,pci-domain = <2>;
+		linux,pci-domain = <4>;
 		cdns,max-outbound-regions = <16>;
 		cdns,no-bar-match-nbits = <48>;
 		vendor-id = /bits/ 16 <0x1f1c>;
@@ -119,11 +122,12 @@
 	pcie@f068000000 {
 		compatible = "sophgo,cdns-pcie-host";
 		device_type = "pci";
+		dma-coherent;
 		#address-cells = <3>;
 		#size-cells = <2>;
 
 		bus-range = <0xc0 0xff>;
-		linux,pci-domain = <3>;
+		linux,pci-domain = <5>;
 		cdns,max-outbound-regions = <16>;
 		cdns,no-bar-match-nbits = <48>;
 		vendor-id = /bits/ 16 <0x1f1c>;
